@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Shops | QueueLess</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/shops.css">
+
+    <script src="./js/shops.js" defer></script>
+</head>
+
+<body>
+
+    <header class="navbar">
+
+        <div class="logo">
+            <a href="../../index.html">QueueLess</a>
+        </div>
+
+        <nav class="nav-links">
+            <a href="../../login.html">Login</a>
+            <span>|</span>
+            <a href="../../register.html">Register</a>
+        </nav>
+
+    </header>
+
+
+    <!-- Main Content -->
+    <main class="shops-container">
+
+        <!-- Page Heading -->
+        <section class="page-heading">
+            <h1>Find Shops and Services</h1>
+            <p>Search for your favorite barber, doctor, dentist and more.</p>
+        </section>
+
+
+        <!-- Search Section -->
+        <section class="search-section">
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search barber, doctor, dentist, shop name..."
+            >
+
+            <button type="button" id="searchButton">
+                Search
+            </button>
+
+        </section>
+
+
+        <!-- Category Section -->
+        <section class="category-section">
+
+            <button class="category-btn active" data-category="All">
+                All
+            </button>
+
+            <button class="category-btn" data-category="Barber">
+                Barber
+            </button>
+
+            <button class="category-btn" data-category="Doctor">
+                Doctor
+            </button>
+
+            <button class="category-btn" data-category="Dentist">
+                Dentist
+            </button>
+
+            <button class="category-btn" data-category="More">
+                More
+            </button>
+
+        </section>
+
+
+        <!-- Shop Results -->
+        <section class="shop-section">
+
+            <div class="result-heading">
+                <h2>Available Shops</h2>
+
+                <p id="resultCount">0 shops found</p>
+            </div>
+
+
+            <div class="shop-grid" id="shopContainer">
+
+            </div>
+
+            <!-- Message when no shop is found -->
+            <p class="no-result" id="noResult">
+                No shops found. Try another search.
+            </p>
+
+        </section>
+
+    </main>
+
+
+    <footer class="footer">
+        <p>© 2026 QueueLess. All rights reserved.</p>
+    </footer>
+
+</body>
+
+</html>

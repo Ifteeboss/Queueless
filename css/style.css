@@ -1,0 +1,599 @@
+
+/* Main colours of QueueLess */
+
+:root {
+    --primary: #0F766E;
+    --dark: #134E4A;
+    --accent: #F59E0B;
+    --bg: #F8FAFC;
+    --text: #0F172A;
+    --muted: #64748B;
+    --border: #CBD5E1;
+    --danger: #DC2626;
+    --radius: 10px;
+}
+
+
+/* Apply to all elements */
+
+* {
+    box-sizing: border-box;
+}
+
+
+/* Body design */
+
+body {
+    margin: 0;
+    font-family: "Inter", Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--text);
+    background: var(--bg);
+}
+
+
+/* Hide elements */
+
+.hidden {
+    display: none;
+}
+
+
+/* Heading design */
+
+h1 {
+    font-size: 24px;
+    margin: 0 0 4px;
+}
+
+h2 {
+    font-size: 20px;
+    margin: 0 0 4px;
+}
+
+
+/* Input fields and buttons */
+
+.field {
+    margin-bottom: 16px;
+}
+
+.field label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 6px;
+}
+
+
+/* Text box, password box and dropdown */
+
+input[type="text"],
+input[type="password"],
+select {
+    width: 100%;
+    height: 44px;
+    padding: 0 12px;
+    font-family: inherit;
+    font-size: 14px;
+    color: var(--text);
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+}
+
+
+/* Placeholder text colour */
+
+input::placeholder {
+    color: #94A3B8;
+}
+
+
+/* When user clicks an input field */
+
+input:focus,
+select:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.18);
+}
+
+
+/* Two columns in a row */
+
+.row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+
+/* Error message */
+
+.error {
+    color: var(--danger);
+    font-size: 13px;
+    margin: 0 0 12px;
+}
+
+/* Hide error message when empty */
+
+.error:empty {
+    display: none;
+}
+
+
+/* Button design */
+
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 46px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    color: white;
+    text-decoration: none;
+    background: var(--primary);
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+}
+
+
+/* Button colour when mouse moves over it */
+
+.btn:hover {
+    background: var(--dark);
+}
+
+
+/* Login button design */
+
+.btn-round {
+    height: 48px;
+    margin-top: 8px;
+    border-radius: 999px;
+}
+
+
+/* Password show and hide button */
+
+.password-wrap {
+    position: relative;
+}
+
+.password-wrap input {
+    padding-right: 60px;
+}
+
+.toggle-pass {
+    position: absolute;
+    top: 50%;
+    right: 6px;
+    transform: translateY(-50%);
+    padding: 6px 8px;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--muted);
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.toggle-pass:hover {
+    color: var(--primary);
+}
+
+
+/* Registration page */
+
+
+/* Top navigation bar */
+
+.topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 16px 24px;
+}
+
+
+/* Website logo */
+
+.logo {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--primary);
+    text-decoration: none;
+}
+
+
+/* Navigation link */
+
+.topbar-link {
+    padding: 8px 14px;
+    font-weight: 500;
+    color: var(--text);
+    text-decoration: none;
+    border-radius: 8px;
+}
+
+.topbar-link:hover {
+    background: #E2E8F0;
+}
+
+
+/* Registration page position */
+
+.page {
+    display: flex;
+    justify-content: center;
+    padding: 16px 16px 56px;
+}
+
+
+/* Registration form card */
+
+.card {
+    width: 100%;
+    max-width: 520px;
+    padding: 32px;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+}
+
+
+/* Small description text */
+
+.lead {
+    color: var(--muted);
+    margin: 0 0 24px;
+}
+
+
+/* Customer and provider selection */
+
+.segmented {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+    padding: 4px;
+    margin-bottom: 24px;
+    background: #F1F5F9;
+    border-radius: var(--radius);
+}
+
+
+/* Hide the original radio button */
+
+.segmented input {
+    position: absolute;
+    opacity: 0;
+}
+
+
+/* Customer and provider options */
+
+.segmented label {
+    padding: 9px 8px;
+    text-align: center;
+    font-weight: 500;
+    color: var(--muted);
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+
+/* Selected option design */
+
+.segmented input:checked + label {
+    background: white;
+    color: var(--primary);
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.12);
+}
+
+
+/* Small information text */
+
+.hint {
+    color: var(--muted);
+    font-size: 13px;
+    margin: -8px 0 16px;
+}
+
+
+/* Extra information for service providers */
+
+.provider-fields {
+    padding: 16px 16px 4px;
+    margin: 0 0 16px;
+    background: #F8FAFC;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+}
+
+.provider-fields legend {
+    padding: 0 6px;
+    font-weight: 700;
+}
+
+
+/* Admin approval notice */
+
+.notice {
+    padding: 10px 12px;
+    margin: 0 0 12px;
+    font-size: 13px;
+    color: #92400E;
+    background: #FEF3C7;
+    border-radius: 8px;
+}
+
+
+/* Password strength bar */
+
+.strength {
+    height: 4px;
+    margin: -4px 0 20px;
+    background: #E2E8F0;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.strength span {
+    display: block;
+    width: 0;
+    height: 100%;
+}
+
+
+/* Login and registration links */
+
+.switch {
+    margin: 20px 0 0;
+    text-align: center;
+    color: var(--muted);
+}
+
+.switch a,
+.link {
+    color: var(--primary);
+    font-weight: 500;
+}
+
+.switch a {
+    text-decoration: none;
+}
+
+
+/* Registration success message */
+
+.success {
+    text-align: center;
+    padding-top: 16px;
+}
+
+.success-icon {
+    width: 56px;
+    height: 56px;
+    margin: 0 auto 16px;
+    line-height: 56px;
+    font-size: 26px;
+    color: white;
+    background: #16A34A;
+    border-radius: 50%;
+}
+
+
+/* Login page */
+
+
+/* Main login page with two sections */
+
+.split {
+    display: grid;
+    grid-template-columns: 5fr 7fr;
+    min-height: 100vh;
+    background: white;
+}
+
+
+/* Left side of login page */
+
+.brand {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 32px 40px 48px;
+    color: white;
+    background: var(--dark);
+    overflow: hidden;
+}
+
+
+/* Logo on the left side */
+
+.brand-logo {
+    font-size: 20px;
+    font-weight: 700;
+    color: white;
+    text-decoration: none;
+}
+
+
+/* Token information box */
+
+.token-pill {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    align-self: flex-start;
+    margin-left: -40px;
+    padding: 10px 28px 10px 10px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-left: none;
+    border-radius: 0 999px 999px 0;
+}
+
+
+/* Token number circle */
+
+.token-no {
+    width: 64px;
+    height: 64px;
+    line-height: 64px;
+    text-align: center;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--dark);
+    background: var(--accent);
+    border-radius: 50%;
+}
+
+
+/* Token information text */
+
+.token-text strong {
+    display: block;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.token-text small {
+    font-size: 13px;
+    color: #99F6E4;
+}
+
+
+/* Left side heading and paragraph */
+
+.brand-copy h2 {
+    margin: 0 0 8px;
+    font-size: 40px;
+    line-height: 1.1;
+}
+
+.brand-copy p {
+    max-width: 300px;
+    margin: 0;
+    color: #CCFBF1;
+}
+
+
+/* Right side login form */
+
+.panel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 24px;
+}
+
+
+/* Login form width */
+
+.panel-inner {
+    width: 100%;
+    max-width: 380px;
+}
+
+
+/* Logo above login form */
+
+.login-logo {
+    display: block;
+    margin-bottom: 40px;
+    text-align: center;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--primary);
+    text-decoration: none;
+}
+
+
+/* Login heading */
+
+.panel h1 {
+    text-align: center;
+    font-size: 28px;
+}
+
+
+/* Login page description */
+
+.sub {
+    text-align: center;
+    color: var(--muted);
+    margin: 0 0 32px;
+}
+
+
+/* Remember me checkbox */
+
+.remember {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.remember input {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--primary);
+}
+
+
+@media (max-width: 860px) {
+
+    .split {
+        grid-template-columns: 1fr;
+    }
+
+    .brand {
+        display: none;
+    }
+
+    .panel {
+        align-items: flex-start;
+        padding: 32px 20px;
+    }
+
+    .login-logo {
+        margin-bottom: 28px;
+    }
+
+}
+
+
+
+@media (max-width: 520px) {
+
+    .topbar {
+        padding: 12px 16px;
+    }
+
+    .page {
+        padding: 8px 12px 40px;
+    }
+
+    .card {
+        padding: 24px 18px;
+    }
+
+    .row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+}

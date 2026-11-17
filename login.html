@@ -1,0 +1,134 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Log in | QueueLess</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div class="split">
+
+        <aside class="brand">
+
+            <a href="index.html" class="brand-logo">QueueLess</a>
+
+            <div class="token-pill">
+
+                <span class="token-no">#4</span>
+
+                <span class="token-text">
+                    <strong>Your token</strong>
+                    <small>Haircut, 8:00 PM</small>
+                </span>
+
+            </div>
+
+            <div class="brand-copy">
+
+                <h2>Skip the wait.</h2>
+
+                <p>
+                    Book a slot, get your token, and arrive when it's your turn.
+                </p>
+
+            </div>
+
+        </aside>
+
+        <main class="panel">
+
+            <div class="panel-inner">
+
+                <a href="index.html" class="login-logo">QueueLess</a>
+
+                <h1>Welcome back.</h1>
+
+                <p class="sub">
+                    New to QueueLess?
+                    <a href="register.html" class="link">Sign up</a>
+                </p>
+
+
+                <!-- Login form starts here -->
+                <form id="loginForm">
+
+                    <!-- Email or phone number -->
+                    <div class="field">
+
+                        <label for="identifier">Email or phone</label>
+
+                        <input
+                            type="text"
+                            id="identifier"
+                            placeholder="you@example.com or 01712345678"
+                        >
+
+                    </div>
+
+
+                    <!-- Password field -->
+                    <div class="field">
+
+                        <label for="password">Password</label>
+
+                        <div class="password-wrap">
+
+                            <input
+                                type="password"
+                                id="password"
+                                placeholder="Your password"
+                            >
+
+                            <button
+                                type="button"
+                                class="toggle-pass"
+                                data-target="password"
+                            >Show</button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Error message will appear here -->
+                    <p id="message" class="error"></p>
+
+
+                    <!-- Login button -->
+                    <button type="submit" class="btn btn-round">
+                        Log in
+                    </button>
+
+
+                    <!-- Remember me checkbox -->
+                    <label class="remember">
+
+                        <input type="checkbox" id="remember" checked>
+
+                        <span>Remember me</span>
+
+                    </label>
+
+                </form>
+
+            </div>
+
+        </main>
+
+    </div>
+
+
+    <!-- JavaScript file -->
+    <script src="js/auth.js"></script>
+
+</body>
+</html>

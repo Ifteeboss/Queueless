@@ -1,0 +1,278 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Create account | QueueLess</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+
+    <!-- Top navigation bar -->
+    <header class="topbar">
+
+        <a href="index.html" class="logo">QueueLess</a>
+
+        <a href="login.html" class="topbar-link">Log in</a>
+
+    </header>
+
+
+
+    <!-- Main registration page -->
+    <main class="page">
+
+        <section class="card">
+
+
+            <!-- Registration form section -->
+            <div id="formView">
+
+                <h1>Create your account</h1>
+
+                <p class="lead">
+                    Book a time slot, get a token, skip the wait.
+                </p>
+
+
+                <!-- Registration form starts here -->
+                <form id="registerForm">
+
+
+                    <!-- Select customer or service provider -->
+                    <div class="segmented">
+
+                        <input type="radio" name="role" id="roleCustomer" value="customer" checked>
+
+                        <label for="roleCustomer">I'm a customer</label>
+
+
+                        <input type="radio" name="role" id="roleProvider" value="provider">
+
+                        <label for="roleProvider">I'm a service provider</label>
+
+                    </div>
+
+
+
+                    <!-- Full name -->
+                    <div class="field">
+
+                        <label for="fullName">Full name</label>
+
+                        <input type="text" id="fullName" placeholder="Rahim Uddin">
+
+                    </div>
+
+
+
+                    <!-- Email and phone number -->
+                    <div class="row">
+
+                        <div class="field">
+
+                            <label for="email">Email</label>
+
+                            <input type="text" id="email" placeholder="you@example.com">
+
+                        </div>
+
+
+                        <div class="field">
+
+                            <label for="phone">Phone</label>
+
+                            <input type="text" id="phone" placeholder="01712345678">
+
+                        </div>
+
+                    </div>
+
+
+                    <p class="hint">
+                        Enter at least one. You can log in with either.
+                    </p>
+
+
+
+                    <!-- Extra information for service providers -->
+                    <fieldset id="providerFields" class="provider-fields hidden">
+
+                        <legend>Shop details</legend>
+
+
+                        <!-- Shop name -->
+                        <div class="field">
+
+                            <label for="shopName">Shop name</label>
+
+                            <input type="text" id="shopName" placeholder="Style Cut Salon">
+
+                        </div>
+
+
+
+                        <!-- Category and area -->
+                        <div class="row">
+
+                            <div class="field">
+
+                                <label for="category">Category</label>
+
+                                <select id="category">
+
+                                    <option value="1">Barber</option>
+
+                                    <option value="2">Doctor</option>
+
+                                    <option value="3">Dentist</option>
+
+                                </select>
+
+                            </div>
+
+
+                            <div class="field">
+
+                                <label for="area">Area</label>
+
+                                <input type="text" id="area" placeholder="Dhanmondi">
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- Shop address -->
+                        <div class="field">
+
+                            <label for="address">Address</label>
+
+                            <input type="text" id="address" placeholder="House 12, Road 5">
+
+                        </div>
+
+
+                        <!-- Admin approval message -->
+                        <p class="notice">
+                            Your shop will be visible after an admin approves it.
+                        </p>
+
+                    </fieldset>
+
+
+
+                    <!-- Password and confirm password -->
+                    <div class="row">
+
+                        <div class="field">
+
+                            <label for="password">Password</label>
+
+                            <div class="password-wrap">
+
+                                <input type="password" id="password" placeholder="At least 8 characters">
+
+                                <button type="button" class="toggle-pass" data-target="password">
+                                    Show
+                                </button>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="field">
+
+                            <label for="confirmPassword">Confirm password</label>
+
+                            <div class="password-wrap">
+
+                                <input type="password" id="confirmPassword" placeholder="Repeat password">
+
+                                <button type="button" class="toggle-pass" data-target="confirmPassword">
+                                    Show
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- Password strength bar -->
+                    <div class="strength">
+
+                        <span id="strengthBar"></span>
+
+                    </div>
+
+
+
+                    <!-- Error message -->
+                    <p id="message" class="error"></p>
+
+
+
+                    <!-- Create account button -->
+                    <button type="submit" class="btn">
+                        Create account
+                    </button>
+
+
+                </form>
+
+
+
+                <!-- Link to login page -->
+                <p class="switch">
+
+                    Already have an account?
+
+                    <a href="login.html">Log in</a>
+
+                </p>
+
+            </div>
+
+
+
+            <!-- This section appears after successful registration -->
+            <div id="successView" class="success hidden">
+
+                <div class="success-icon">✓</div>
+
+                <h2 id="successTitle">Account created</h2>
+
+                <p id="successText" class="lead"></p>
+
+                <a href="login.html" class="btn">Go to log in</a>
+
+            </div>
+
+
+        </section>
+
+    </main>
+
+
+
+    <!-- JavaScript file -->
+    <script src="js/auth.js"></script>
+
+</body>
+</html>

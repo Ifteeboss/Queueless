@@ -1,8 +1,11 @@
 
-// ---------------- SHOP INFORMATION ----------------
+/* ============================================
+   QUEUELESS - SHOP INFORMATION
+   ============================================ */
 
-// This array stores all the shop information.
-// Each shop has an ID, name, category, rating and available time.
+
+// This array stores all available shops.
+// Each shop is an object containing its own information.
 
 const shops = [
 
@@ -63,160 +66,286 @@ const shops = [
 ];
 
 
-// ---------------- CONNECT HTML ELEMENTS ----------------
 
-// Get the place where all shop cards will be displayed.
+/* ============================================
+   CONNECT HTML ELEMENTS WITH JAVASCRIPT
+   ============================================ */
+
+
+// Find the HTML element where shop cards will appear.
+
 const shopContainer = document.getElementById("shopContainer");
 
-// Get the search input field.
+
+// Find the search input field.
+
 const searchInput = document.getElementById("searchInput");
 
-// Get the search button.
+
+// Find the search button.
+
 const searchButton = document.getElementById("searchButton");
 
-// Get all category buttons.
+
+// Find all category buttons.
+
 const categoryButtons = document.querySelectorAll(".category-btn");
 
-// Get the element that shows the number of shops.
+
+// Find the element that displays the number of shops.
+
 const resultCount = document.getElementById("resultCount");
 
-// Get the message shown when no shop is found.
+
+// Find the message displayed when no shops are available.
+
 const noResult = document.getElementById("noResult");
 
 
-// This variable stores the category selected by the user.
-// Initially, all shops will be displayed.
+
+// Initially, the All category is selected.
 
 let selectedCategory = "All";
 
 
-// ---------------- DISPLAY SHOP INFORMATION ----------------
+
+/* ============================================
+   DISPLAY SHOP CARDS
+   ============================================ */
+
+
+// This function receives a list of shops
+// and displays those shops on the webpage.
 
 function displayShops(shopList) {
 
-    // First, remove the previously displayed shop cards.
+
+    // STEP 1: Clear previously displayed cards.
+
     shopContainer.innerHTML = "";
 
 
-    // Show how many shops are available.
-    resultCount.innerHTML = shopList.length + " shops found";
+
+    // STEP 2: Display the total number of shops.
+
+    resultCount.textContent = shopList.length + " shops found";
 
 
-    // Check whether the shop list is empty.
+
+    // STEP 3: Check whether the shop list is empty.
+
     if (shopList.length === 0) {
 
-        // Show the no shops found message.
+        // Show the no result message.
+
         noResult.style.display = "block";
 
-        // Stop the function because there are no shops to display.
+
+        // Stop the function because there are no shops.
+
         return;
+
     }
 
 
+
     // If shops are available, hide the no result message.
+
     noResult.style.display = "none";
 
 
-    // Go through each shop one by one.
-    shopList.forEach(function(shop) {
 
-        // Create a new div for the shop card.
+    // STEP 4: Create shop cards using a FOR LOOP.
+
+
+    // Start from index 0.
+    // Continue until all shops have been processed.
+    // Increase the index by 1 after each round.
+
+    for (let i = 0; i < shopList.length; i++) {
+
+
+        // Get the current shop information.
+
+        const currentShop = shopList[i];
+
+
+
+        // STEP 5: Create a new HTML div.
+
         const shopCard = document.createElement("div");
 
 
-        // Give the div a CSS class.
+
+        // Give the new div a CSS class.
+
         shopCard.className = "shop-card";
 
 
-        // Add shop information inside the card.
-        shopCard.innerHTML =
 
-            '<div class="shop-image">Shop Image</div>' +
+        // STEP 6: Add shop information inside the card.
 
-            '<span class="shop-category">' +
-                shop.category +
-            '</span>' +
+        shopCard.innerHTML = `
 
-            '<h3>' +
-                shop.name +
-            '</h3>' +
-
-            '<p class="shop-info">' +
-                'Rating: ' + shop.rating +
-                ' | Open until ' + shop.closingTime +
-            '</p>' +
-
-            '<p class="shop-info">' +
-                'Next slot: ' + shop.nextSlot +
-            '</p>' +
-
-            '<div class="shop-buttons">' +
-
-                '<a class="details-btn" href="shop-details.html?shop=' +
-                    shop.id +
-                '">View Details</a>' +
-
-                '<a class="book-btn" href="book.html?shop=' +
-                    shop.id +
-                '">Book Now</a>' +
-
-            '</div>';
+            <div class="shop-image">
+                Shop Image
+            </div>
 
 
-        // Add the completed shop card to the HTML page.
+            <span class="shop-category">
+                ${currentShop.category}
+            </span>
+
+
+            <h3>
+                ${currentShop.name}
+            </h3>
+
+
+            <p class="shop-info">
+                Rating: ${currentShop.rating}
+                | Open until ${currentShop.closingTime}
+            </p>
+
+
+            <p class="shop-info">
+                Next slot: ${currentShop.nextSlot}
+            </p>
+
+
+            <div class="shop-buttons">
+
+                <a class="details-btn"
+                   href="shop-details.html?shop=${currentShop.id}">
+
+                    View Details
+
+                </a>
+
+
+                <a class="book-btn"
+                   href="book.html?shop=${currentShop.id}">
+
+                    Book Now
+
+                </a>
+
+            </div>
+
+        `;
+
+
+
+        // STEP 7: Put the completed card inside shopContainer.
+
         shopContainer.appendChild(shopCard);
 
-    });
 
-}
+    } // End of FOR LOOP
 
 
-// ---------------- SEARCH AND FILTER SHOPS ----------------
+} // End of displayShops function
+
+
+
+
+/* ============================================
+   SEARCH AND FILTER SHOPS
+   ============================================ */
+
+
+// This function searches shops by name and category.
+// It also checks which category button is selected.
 
 function searchShops() {
 
-    // Get the text entered by the user.
-    const searchText = searchInput.value.toLowerCase().trim();
+
+    // STEP 1: Get the text entered in the search box.
+
+    let searchText = searchInput.value;
 
 
-    // Create a new array containing only matching shops.
-    const filteredShops = shops.filter(function(shop) {
+    // Convert the text to lowercase.
+
+    searchText = searchText.toLowerCase();
 
 
-        // Check whether the shop name matches the search.
-        const matchesName = shop.name.toLowerCase().includes(searchText);
+    // Remove unnecessary spaces from the beginning and end.
+
+    searchText = searchText.trim();
 
 
-        // Check whether the shop category matches the search.
-        const matchesCategory = shop.category.toLowerCase().includes(searchText);
+
+    // STEP 2: Create an empty array.
+
+    // Matching shops will be stored inside this array.
+
+    let filteredShops = [];
 
 
-        // Check whether the shop belongs to the selected category.
+
+    // STEP 3: Check every shop one by one.
+
+    for (let i = 0; i < shops.length; i++) {
+
+
+        // Get the current shop.
+
+        let currentShop = shops[i];
+
+
+
+        // STEP 4: Check whether the shop name matches.
+
+        let shopName = currentShop.name.toLowerCase();
+
+        let matchesName = shopName.includes(searchText);
+
+
+
+        // STEP 5: Check whether the category matches.
+
+        let shopCategory = currentShop.category.toLowerCase();
+
+        let matchesCategory = shopCategory.includes(searchText);
+
+
+
+        // STEP 6: Check the selected category button.
+
         let matchesSelectedCategory = false;
 
 
+
         // If All is selected, every category is allowed.
+
         if (selectedCategory === "All") {
 
             matchesSelectedCategory = true;
 
         }
 
-        // If More is selected, show shops in the More category.
+
+
+        // If More is selected, show only More category shops.
+
         else if (selectedCategory === "More") {
 
-            if (shop.category === "More") {
+            if (currentShop.category === "More") {
 
                 matchesSelectedCategory = true;
 
             }
 
         }
+
+
 
         // Otherwise, check the exact selected category.
+
         else {
 
-            if (shop.category === selectedCategory) {
+            if (currentShop.category === selectedCategory) {
 
                 matchesSelectedCategory = true;
 
@@ -225,79 +354,142 @@ function searchShops() {
         }
 
 
-        // Return true if the shop matches the search
-        // and also belongs to the selected category.
-        return (matchesName || matchesCategory) && matchesSelectedCategory;
 
-    });
+        // STEP 7: Check both search and category conditions.
+
+        if (
+            (matchesName || matchesCategory) &&
+            matchesSelectedCategory
+        ) {
 
 
-    // Display the shops that match the search.
+            // If both conditions are true,
+            // add this shop to the filtered array.
+
+            filteredShops.push(currentShop);
+
+        }
+
+
+    } // End of FOR LOOP
+
+
+
+    // STEP 8: Display only the matching shops.
+
     displayShops(filteredShops);
 
-}
+
+} // End of searchShops function
 
 
-// ---------------- SEARCH BUTTON CLICK ----------------
 
-// When the user clicks the Search button,
-// the searchShops function will run.
+
+/* ============================================
+   SEARCH BUTTON EVENT
+   ============================================ */
+
+
+// When the customer clicks the Search button,
+// the searchShops function will execute.
 
 searchButton.addEventListener("click", function() {
 
+
+    // Call the search function.
+
     searchShops();
+
 
 });
 
 
-// ---------------- SEARCH WHILE TYPING ----------------
 
-// When the user types something in the search box,
+
+/* ============================================
+   SEARCH WHILE TYPING
+   ============================================ */
+
+
+// When the customer types something in the search box,
 // the shop list will automatically update.
 
 searchInput.addEventListener("input", function() {
 
+
+    // Call the search function.
+
     searchShops();
+
 
 });
 
 
-// ---------------- CATEGORY BUTTON CLICK ----------------
-
-// Add a click event to every category button.
-
-categoryButtons.forEach(function(button) {
-
-    button.addEventListener("click", function() {
 
 
-        // First, remove the active class from all buttons.
-        categoryButtons.forEach(function(categoryButton) {
-
-            categoryButton.classList.remove("active");
-
-        });
+/* ============================================
+   CATEGORY BUTTON EVENTS
+   ============================================ */
 
 
-        // Add the active class to the button clicked by the user.
-        button.classList.add("active");
+// Use a FOR LOOP to connect every category button.
+
+for (let i = 0; i < categoryButtons.length; i++) {
 
 
-        // Get the category name from the clicked button.
-        selectedCategory = button.getAttribute("data-category");
+    // Get the current category button.
+
+    let currentButton = categoryButtons[i];
 
 
-        // Display shops based on the selected category.
+
+    // Add a click event to this button.
+
+    currentButton.addEventListener("click", function() {
+
+
+
+        // STEP 1: Remove active class from all buttons.
+
+        for (let j = 0; j < categoryButtons.length; j++) {
+
+            categoryButtons[j].classList.remove("active");
+
+        }
+
+
+
+        // STEP 2: Add active class to the clicked button.
+
+        currentButton.classList.add("active");
+
+
+
+        // STEP 3: Get the category name from HTML.
+
+        selectedCategory = currentButton.getAttribute("data-category");
+
+
+
+        // STEP 4: Display shops from the selected category.
+
         searchShops();
+
 
     });
 
-});
+
+}
 
 
-// ---------------- SHOW SHOPS WHEN PAGE LOADS ----------------
 
-// When the customer opens the Shops page,
-// display all shops initially.
+
+/* ============================================
+   DISPLAY ALL SHOPS WHEN PAGE LOADS
+   ============================================ */
+
+
+// When the customer first opens shops.html,
+// display all available shops.
 
 displayShops(shops);
